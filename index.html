@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Map</title>
-    
-</script>
+
+    </script>
 
     <link rel="stylesheet" href="style.css">
-    
+
 </head>
 
 <body>
-     <main>
+    <main>
         <div class="container">
             <header>
                 <ul class="menu">
@@ -26,10 +26,10 @@
                 <div id="gateBtn" title="正門ビューに切り替え"></div>
                 <div id="campusBtn" title="構内ビューに切り替え"></div>
             </div>
-             <div id="map"></div>
+            <div id="map"></div>
         </div>
     </main>
-   
+
     <script>
         let map;
         let panorama;
@@ -54,7 +54,7 @@
                 zoom: 17,
                 disableDefaultUI: true,
                 fullscreenControl: false // ← これで非表示になる！
-                
+
             });
 
             panorama = new google.maps.StreetViewPanorama(document.getElementById("map"), {
@@ -64,7 +64,7 @@
                     pitch: gateLocation.pitch
                 },
                 visible: true,
-                fullscreenControl: false 
+                fullscreenControl: false
             });
 
             map.setStreetView(panorama);
@@ -80,9 +80,8 @@
             panorama.setPov({ heading: campusLocation.heading, pitch: campusLocation.pitch });
         });
     </script>
-<script async
-  src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-</script>
+    <script src="loadMap.js"></script>
+
 </body>
 
 
