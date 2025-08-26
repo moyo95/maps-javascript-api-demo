@@ -1,0 +1,13 @@
+# macOS 系
+.DS_Store
+._*
+
+# VS Code 設定
+.vscode/
+
+# 環境ファイル
+.env
+
+# ログやキャッシュ
+*.log
+.cache/

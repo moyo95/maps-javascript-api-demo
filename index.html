@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Map</title>
+    
+</script>
+
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+     <main>
+        <div class="container">
+            <header>
+                <ul class="menu">
+                    <li><a href="index.html" title="home">HOME</a></li>
+                    <li><a href="#" title="view">VIEW</a></li>
+                    <li><a href="#" title="test">TEST</a></li>
+                </ul>
+            </header>
+            <div class="change_btn">
+                <div id="gateBtn" title="正門ビューに切り替え"></div>
+                <div id="campusBtn" title="構内ビューに切り替え"></div>
+            </div>
+             <div id="map"></div>
+        </div>
+    </main>
+   
+    <script>
+        let map;
+        let panorama;
+
+        const gateLocation = {
+            lat: 35.70610308373265,
+            lng: 139.7070689656173,
+            heading: 333.48,
+            pitch: -0.86
+        };
+
+        const campusLocation = {
+            lat: 35.70597226459471,
+            lng: 139.7075747395764,
+            heading: 65.07,
+            pitch: 5.37
+        };
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: gateLocation,
+                zoom: 17,
+                disableDefaultUI: true,
+                fullscreenControl: false // ← これで非表示になる！
+                
+            });
+
+            panorama = new google.maps.StreetViewPanorama(document.getElementById("map"), {
+                position: gateLocation,
+                pov: {
+                    heading: gateLocation.heading,
+                    pitch: gateLocation.pitch
+                },
+                visible: true,
+                fullscreenControl: false 
+            });
+
+            map.setStreetView(panorama);
+        }
+
+        document.getElementById("gateBtn").addEventListener("click", () => {
+            panorama.setPosition(gateLocation);
+            panorama.setPov({ heading: gateLocation.heading, pitch: gateLocation.pitch });
+        });
+
+        document.getElementById("campusBtn").addEventListener("click", () => {
+            panorama.setPosition(campusLocation);
+            panorama.setPov({ heading: campusLocation.heading, pitch: campusLocation.pitch });
+        });
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAu35x6S3Ko69VRteo0QeqOudoNfTigA8&callback=initMap" async defer></script>
+</body>
+
+
+</html>
