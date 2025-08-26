@@ -61,20 +61,20 @@ header {
     border-radius: 5px;
 }
 
-
 @keyframes blinkIcon {
-
-    0%,
-    100% {
-        background-position: 0px 0px;
-        /* 上のアイコン */
+    0% {
+        background-position: 0 0;
     }
 
     50% {
-        background-position: 0px -78px;
-        /* 下のアイコン */
+        background-position: 0 -40px;
+    }
+
+    100% {
+        background-position: 0 0;
     }
 }
+
 
 .change_btn #gateBtn,
 .change_btn #campusBtn {
@@ -83,6 +83,7 @@ header {
     width: 40px;
     height: 40px;
     animation: blinkIcon 1s steps(1) infinite;
+
     border: none;
     cursor: pointer;
     position: relative;
